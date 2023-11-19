@@ -10,7 +10,7 @@ int main() {
     Player player1, player2, player3, player4;
 
     // Initial drawing of cards for players
-    for (int i = 0; i < 1; ++i) {
+    for (int i = 0; i < 8; ++i) {
         player1.drawCard(deck);
         player2.drawCard(deck);
         player3.drawCard(deck);
