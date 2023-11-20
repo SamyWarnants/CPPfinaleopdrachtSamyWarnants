@@ -151,7 +151,7 @@ public:
         std::cout << "Starting Uno Game!" << std::endl;
 
         // Game loop
-        for (int round = 0; round < 20; ++round) {  // Adjust the number of rounds as needed
+        for (int round = 0; round < 40; ++round) {  // Adjust the number of rounds as needed
             playRound();
             displayPlayerHands();
             // Check game-ending conditions and break the loop if needed
