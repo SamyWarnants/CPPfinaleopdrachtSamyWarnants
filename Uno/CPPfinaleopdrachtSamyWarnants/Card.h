@@ -7,9 +7,13 @@
 #include <ctime>
 #include <cstdlib>
 
-// Enumeration for card colors and values, providing meaningful names.
-enum Color { RED, GREEN, BLUE, YELLOW };
-enum Value { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR };
+// Enumeration for card values, providing meaningful names.
+enum Value {
+    ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_TWO, CHOOSE_COLOR, P4
+};
+
+// Enumeration for card colors, providing meaningful names.
+enum Color { RED, GREEN, BLUE, YELLOW, BLACK };
 
 // Card class representing a playing card with color and value.
 class Card {
@@ -23,26 +27,52 @@ public:
     // Function to display the card.
     void displayCard() const {
         std::cout << "Color: " << color << ", Value: ";
-        if (value <= NINE) {
-            std::cout << value;
-        } else {
-            switch (value) {
-            case SKIP:
-                std::cout << "SKIP";
-                break;
-            case REVERSE:
-                std::cout << "REVERSE";
-                break;
-            case DRAW_TWO:
-                std::cout << "DRAW_TWO";
-                break;
-            case WILD:
-                std::cout << "WILD";
-                break;
-            case WILD_DRAW_FOUR:
-                std::cout << "WILD_DRAW_FOUR";
-                break;
-            }
+        switch (value) {
+        case ZERO:
+            std::cout << "0";
+            break;
+        case ONE:
+            std::cout << "1";
+            break;
+        case TWO:
+            std::cout << "2";
+            break;
+        case THREE:
+            std::cout << "3";
+            break;
+        case FOUR:
+            std::cout << "4";
+            break;
+        case FIVE:
+            std::cout << "5";
+            break;
+        case SIX:
+            std::cout << "6";
+            break;
+        case SEVEN:
+            std::cout << "7";
+            break;
+        case EIGHT:
+            std::cout << "8";
+            break;
+        case NINE:
+            std::cout << "9";
+            break;
+        case SKIP:
+            std::cout << "SKIP";
+            break;
+        case REVERSE:
+            std::cout << "REVERSE";
+            break;
+        case DRAW_TWO:
+            std::cout << "DRAW_TWO";
+            break;
+        case CHOOSE_COLOR:
+            std::cout << "CHOOSE_COLOR";
+            break;
+        case P4:
+            std::cout << "P4";
+            break;
         }
         std::cout << std::endl;
     }
@@ -62,7 +92,7 @@ public:
     // Function to initialize the deck with all possible cards.
     void initializeDeck() {
         for (int i = RED; i <= YELLOW; ++i) {
-            for (int j = ZERO; j <= WILD_DRAW_FOUR; ++j) {
+            for (int j = ZERO; j <= P4; ++j) {
                 std::string colorName;
                 switch (i) {
                 case RED:
@@ -77,8 +107,11 @@ public:
                 case YELLOW:
                     colorName = "YELLOW";
                     break;
+                case BLACK:
+                    colorName = "BLACK";
+                    break;
                 }
-                cards.push_back(Card(colorName, static_cast<Value>(j)));
+                cards.push_back(Card((j == CHOOSE_COLOR || j == P4) ? "BLACK" : colorName, static_cast<Value>(j)));
             }
         }
     }
@@ -151,7 +184,7 @@ public:
         std::cout << "Starting Uno Game!" << std::endl;
 
         // Game loop
-        for (int round = 0; round < 40; ++round) {  // Adjust the number of rounds as needed
+        for (int round = 0; round < 10; ++round) {  // Adjust the number of rounds as needed
             playRound();
             displayPlayerHands();
             // Check game-ending conditions and break the loop if needed
