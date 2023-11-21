@@ -143,7 +143,7 @@ private:
 
 public:
     Player() {
-        // Player initialization if needed
+        // Player initialization to be added
     }
 
     // Function to draw a card from the deck and add it to the player's hand.
@@ -217,7 +217,7 @@ private:
 
     // Function to play a round of the Uno game.
     void playRound() {
-        // Implement Uno game logic here
+        // Implement Uno game logic will be here
         // For example: players taking turns, playing cards, drawing cards, etc.
         for (auto& player : players) {
             const Card playedCard = player.getHand()[0];  // Use Card instead of const Card*
@@ -232,5 +232,52 @@ private:
         }
     }
 };
+
+/*
+class SpecialActionCard {
+public:
+    virtual void performAction(Player& currentPlayer, UnoGame& unoGame) = 0;
+    virtual ~SpecialActionCard() = default;
+};
+
+class ReverseCard : public SpecialActionCard {
+public:
+    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
+};
+
+class SkipCard : public SpecialActionCard {
+public:
+    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
+};
+
+class DrawTwoCard : public SpecialActionCard {
+public:
+    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
+};
+
+class UnoGame {
+private:
+    std::vector<std::unique_ptr<SpecialActionCard>> specialActionCards;
+
+public:
+    UnoGame() {
+        initializeSpecialActionCards();
+    }
+
+    void playSpecialActionCard(Player& currentPlayer) {
+        if (!specialActionCards.empty()) {
+            int randomIndex = rand() % specialActionCards.size();
+            specialActionCards[randomIndex]->performAction(currentPlayer, *this);
+        }
+    }
+
+private:
+    void initializeSpecialActionCards() {
+        specialActionCards.push_back(std::make_unique<ReverseCard>());
+        specialActionCards.push_back(std::make_unique<SkipCard>());
+        specialActionCards.push_back(std::make_unique<DrawTwoCard>());
+    }
+};
+*/
 
 #endif // CARD_H
