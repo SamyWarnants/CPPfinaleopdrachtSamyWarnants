@@ -231,4 +231,50 @@ private:
         }
     }
 };
+/*
+class SpecialActionCard {
+public:
+    virtual void performAction(Player& currentPlayer, UnoGame& unoGame) = 0;
+    virtual ~SpecialActionCard() = default;
+};
+
+class ReverseCard : public SpecialActionCard {
+public:
+    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
+};
+
+class SkipCard : public SpecialActionCard {
+public:
+    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
+};
+
+class DrawTwoCard : public SpecialActionCard {
+public:
+    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
+};
+
+class UnoGame {
+private:
+    std::vector<std::unique_ptr<SpecialActionCard>> specialActionCards;
+
+public:
+    UnoGame() {
+        initializeSpecialActionCards();
+    }
+
+    void playSpecialActionCard(Player& currentPlayer) {
+        if (!specialActionCards.empty()) {
+            int randomIndex = rand() % specialActionCards.size();
+            specialActionCards[randomIndex]->performAction(currentPlayer, *this);
+        }
+    }
+
+private:
+    void initializeSpecialActionCards() {
+        specialActionCards.push_back(std::make_unique<ReverseCard>());
+        specialActionCards.push_back(std::make_unique<SkipCard>());
+        specialActionCards.push_back(std::make_unique<DrawTwoCard>());
+    }
+};
+*/
 #endif // CARD_H
