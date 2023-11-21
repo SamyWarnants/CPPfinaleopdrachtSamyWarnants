@@ -9,7 +9,8 @@
 
 // Enumeration for card values, providing meaningful names.
 enum Value {
-    ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_TWO, CHOOSE_COLOR, P4};
+    ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_TWO, CHOOSE_COLOR, P4
+};
 
 // Enumeration for card colors, providing meaningful names.
 enum Color { RED, GREEN, BLUE, YELLOW, BLACK };
@@ -27,6 +28,7 @@ public:
     void displayCard() const {
         std::cout << "Color: " << color << ", Value: ";
         switch (value) {
+        // Using enumeration values in a switch statement for better readability.
         case ZERO:
             std::cout << "0";
             break;
@@ -94,6 +96,7 @@ public:
             for (int j = ZERO; j <= P4; ++j) {
                 std::string colorName;
                 switch (i) {
+                // Using enumeration values in a switch statement for better readability.
                 case RED:
                     colorName = "RED";
                     break;
@@ -110,6 +113,7 @@ public:
                     colorName = "BLACK";
                     break;
                 }
+                // Using class constructors and member functions.
                 cards.push_back(Card((j == CHOOSE_COLOR || j == P4) ? "BLACK" : colorName, static_cast<Value>(j)));
             }
         }
@@ -124,6 +128,7 @@ public:
     // Function to draw a card from the deck.
     Card drawCard() {
         if (!cards.empty()) {
+            // Using class member functions.
             Card drawnCard = cards.back();
             cards.pop_back();
             return drawnCard;
@@ -147,11 +152,13 @@ public:
 
     // Function to draw a card from the deck and add it to the player's hand.
     void drawCard(Deck& deck) {
+        // Using class member functions.
         hand.push_back(deck.drawCard());
     }
 
     // Function to set the player's hand.
     void setHand(const std::vector<Card>& newHand) {
+        // Using class member functions.
         hand = newHand;
     }
 
@@ -159,6 +166,7 @@ public:
     void displayHand() const {
         std::cout << "Player's Hand:" << std::endl;
         for (const auto& card : hand) {
+            // Using class member functions.
             card.displayCard();
         }
         std::cout << std::endl;
@@ -166,6 +174,7 @@ public:
 
     // Function to get the player's hand.
     const std::vector<Card>& getHand() const {
+        // Using class member functions.
         return hand;
     }
 };
@@ -199,6 +208,7 @@ private:
     // Function to initialize players.
     void initializePlayers() {
         for (int i = 0; i < 4; ++i) {
+            // Using class constructors.
             players.push_back(Player());
         }
     }
@@ -208,8 +218,10 @@ private:
         for (auto& player : players) {
             std::vector<Card> initialHand;
             for (int i = 0; i < 7; ++i) {
+                // Using class member functions.
                 initialHand.push_back(unoDeck.drawCard());
             }
+            // Using class member functions.
             player.setHand(initialHand);
         }
     }
@@ -227,54 +239,10 @@ private:
     // Function to display player hands.
     void displayPlayerHands() const {
         for (const auto& player : players) {
+            // Using class member functions.
             player.displayHand();
         }
     }
 };
-/*
-class SpecialActionCard {
-public:
-    virtual void performAction(Player& currentPlayer, UnoGame& unoGame) = 0;
-    virtual ~SpecialActionCard() = default;
-};
 
-class ReverseCard : public SpecialActionCard {
-public:
-    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
-};
-
-class SkipCard : public SpecialActionCard {
-public:
-    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
-};
-
-class DrawTwoCard : public SpecialActionCard {
-public:
-    void performAction(Player& currentPlayer, UnoGame& unoGame) override {}
-};
-
-class UnoGame {
-private:
-    std::vector<std::unique_ptr<SpecialActionCard>> specialActionCards;
-
-public:
-    UnoGame() {
-        initializeSpecialActionCards();
-    }
-
-    void playSpecialActionCard(Player& currentPlayer) {
-        if (!specialActionCards.empty()) {
-            int randomIndex = rand() % specialActionCards.size();
-            specialActionCards[randomIndex]->performAction(currentPlayer, *this);
-        }
-    }
-
-private:
-    void initializeSpecialActionCards() {
-        specialActionCards.push_back(std::make_unique<ReverseCard>());
-        specialActionCards.push_back(std::make_unique<SkipCard>());
-        specialActionCards.push_back(std::make_unique<DrawTwoCard>());
-    }
-};
-*/
 #endif // CARD_H
