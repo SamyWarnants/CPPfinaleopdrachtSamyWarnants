@@ -1,9 +1,12 @@
+// main.cpp
+#include "people.h"
 #include <iostream>
 
 int main() {
-    // Output "Hello, World!" to the console
-    std::cout << "Hello, World!" << std::endl;
+    Student student("Alice Smith", 20, 12345);
 
-    // Return 0 to indicate successful execution
+    // Accessing attributes through public methods (abstraction)
+    std::cout << "Student Name: " << student.getName() << ", Age: " << student.getAge() << ", Student ID: " << student.getStudentID() << std::endl;
+
     return 0;
 }
