@@ -33,3 +33,14 @@
 - [x] **Explanation:** The code follows fundamental principles of object-oriented programming, including encapsulation, abstraction, and polymorphism. No significant mistakes are observed.
 
 ## Crossbox: [ ] Completed / [ ] Not Completed
+
+
+# Setup guide
+1) Install the QT IDE with the following (link)[https://www.qt.io/download] make sure you install the open source version since other versions will require payment to continue.
+2) Once this is done use the account you made (in the previous step an account was required to download the program if this was not the case make an account and login inside the maintainance tool)
+3) After that you will be given 3 options for what you would like to do. The one we will select is "add or remove components" then you will be able to select what you would like to install.
+   The following options are the one I have installed on my systems.
+![image](https://github.com/SamyWarnants/CPPfinaleopdrachtSamyWarnants/assets/114075972/ffaa8b53-bec0-4b93-adbe-fb2c8992a287)
+4) Once the QT installation is complete you can clone the project to your own directory.
+5) When this is complete go back to QT and select open project. Go to the folder where the code is cloned into and then open it inside qt. (Make sure that run in terminal is enabled in all projects because they require user input).
+
