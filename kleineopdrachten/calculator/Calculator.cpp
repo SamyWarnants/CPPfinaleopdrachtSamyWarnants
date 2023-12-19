@@ -6,7 +6,7 @@
 Calculator::Calculator() : memory(0.0), previousInput("") {}
 
 void Calculator::displayMenu() const {
-    std::cout << "Calculator Menu select the calculation you would like to do:\n";
+    std::cout << "Calculator Menu: Select the calculation you would like to do:\n";
     std::cout << "1. Add\n";
     std::cout << "2. Subtract\n";
     std::cout << "3. Multiply\n";
@@ -42,6 +42,7 @@ void Calculator::performCalculation(double operand1, double operand2, char opera
         return;
     }
 
+    memory = result;           // Store the result in memory
     showResult(result);
 }
 
@@ -118,6 +119,7 @@ int Calculator::processInput() {
         }
 
         double result = sqrt(operand);
+        memory = result;           // Store the result in memory
         showResult(result);
     } else if (choice == 6) {
         showResult(memory);
