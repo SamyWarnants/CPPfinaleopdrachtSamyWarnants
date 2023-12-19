@@ -6,7 +6,7 @@
 Calculator::Calculator() : memory(0.0), previousInput("") {}
 
 void Calculator::displayMenu() const {
-    std::cout << "Calculator Menu:\n";
+    std::cout << "Calculator Menu select the calculation you would like to do:\n";
     std::cout << "1. Add\n";
     std::cout << "2. Subtract\n";
     std::cout << "3. Multiply\n";
@@ -107,7 +107,7 @@ int Calculator::processInput() {
         performCalculation(operand1, operand2, operation);
     } else if (choice == 5) {
         double operand;
-        std::cout << "Enter operand for square root: ";
+        std::cout << "Enter a number for square root: ";
         std::cin >> operand;
 
         if (std::cin.fail()) {
