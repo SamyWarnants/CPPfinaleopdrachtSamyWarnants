@@ -99,5 +99,5 @@
    The following options are the one I have installed on my systems.
 ![image](https://github.com/SamyWarnants/CPPfinaleopdrachtSamyWarnants/assets/114075972/ffaa8b53-bec0-4b93-adbe-fb2c8992a287)
 4) Once the QT installation is complete you can clone the project to your own directory (If you don't know how this works you can follow this guide on how to [clone repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
-5) When this is complete go back to QT and select open project. Go to the folder where the code is cloned into and then open it inside qt. (Make sure that run in terminal is enabled in all projects because they require user input).
+5) When this is complete go back to QT and select open project. Go to the folder where the code is cloned into and then open it inside qt. (Make sure that run in terminal is enabled in all projects because they require user input and the calculator code will otherwise not work).
 
