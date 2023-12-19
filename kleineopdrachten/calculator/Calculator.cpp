@@ -1,4 +1,3 @@
-// Calculator.cpp
 #include "Calculator.h"
 #include <iostream>
 #include <cmath>
