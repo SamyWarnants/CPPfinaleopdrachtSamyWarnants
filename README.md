@@ -86,7 +86,7 @@
 - [x] **Explanation:** A useful Qt class is used.
 - [ ] **Explanation:** Signals/slots are used where appropriate.
 - [ ] **Explanation:** Test-driven development is followed, with a written test plan or unit tests.
-- [ ] **Explanation:** A bug ticket is reported on another project.
+- [x] **Explanation:** A bug ticket is reported on another project.
 - [ ] **Explanation:** An external library (not Qt) is used where appropriate.
 - [ ] **Explanation:** The project communicates with hardware (e.g., UART, BT).
 - [ ] **Explanation:** A nice extra is implemented that deserves grading.
@@ -100,4 +100,7 @@
 ![image](https://github.com/SamyWarnants/CPPfinaleopdrachtSamyWarnants/assets/114075972/ffaa8b53-bec0-4b93-adbe-fb2c8992a287)
 4) Once the QT installation is complete you can clone the project to your own directory (If you don't know how this works you can follow this guide on how to [clone repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 5) When this is complete go back to QT and select open project. Go to the folder where the code is cloned into and then open it inside qt. (Make sure that run in terminal is enabled in all projects because they require user input and the calculator code will otherwise not work).
+
+# Found a bug!
+A bug was found inside my code but also in [Ceyhans](https://github.com/CeyhanYildiz/Game_Artificial_Intelligence/issues/8) code. I have discovered that in my calculator code that it had 2 different times it asked for what operation needs to be done.
 
