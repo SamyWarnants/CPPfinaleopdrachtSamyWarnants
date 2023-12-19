@@ -1,13 +1,16 @@
 // main.cpp
 #include "Calculator.h"
-
 int main() {
     Calculator calculator;
 
+    bool exitRequested = false;
     int choice;
     do {
         choice = calculator.processInput();
-    } while (choice != 7);  // Continue looping until the user chooses to exit
+        if (choice == 7) {
+            exitRequested = true;
+        }
+    } while (!exitRequested);  // Continue looping until the exit flag is set
 
     return 0;
 }

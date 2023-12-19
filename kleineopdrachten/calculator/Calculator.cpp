@@ -1,8 +1,8 @@
 // Calculator.cpp
 #include "Calculator.h"
 #include <iostream>
-#include <sstream>
 #include <cmath>
+#include <limits>
 
 Calculator::Calculator() : memory(0.0), previousInput("") {}
 
@@ -17,46 +17,9 @@ void Calculator::displayMenu() const {
     std::cout << "7. Exit\n";
 }
 
-int Calculator::processInput() {
-    displayMenu();
-
-    int choice;
-    std::cout << "Enter your choice (1-7): ";
-    std::cin >> choice;
-
-    if (choice >= 1 && choice <= 4) {
-        double operand1, operand2;
-        std::cout << "Enter first operand: ";
-        std::cin >> operand1;
-
-        std::cout << "Enter second operand: ";
-        std::cin >> operand2;
-
-        char operation;
-        std::cout << "Enter operation (+, -, *, /): ";
-        std::cin >> operation;
-
-        performCalculation(operand1, operand2, operation);
-    } else if (choice == 5) {
-        double operand;
-        std::cout << "Enter operand for square root: ";
-        std::cin >> operand;
-
-        double result = sqrt(operand);
-        showResult(result);
-    } else if (choice == 6) {
-        showResult(memory);
-    } else if (choice == 7) {
-        std::cout << "Exiting the calculator. Goodbye!\n";
-    } else {
-        std::cout << "Invalid choice. Please try again.\n";
-    }
-
-    return choice;  // Return choice
-}
-
 void Calculator::performCalculation(double operand1, double operand2, char operation) {
     double result;
+
     switch (operation) {
     case '+':
         result = operand1 + operand2;
@@ -71,7 +34,7 @@ void Calculator::performCalculation(double operand1, double operand2, char opera
         if (operand2 != 0) {
             result = operand1 / operand2;
         } else {
-            std::cout << "Error: Division by zero\n";
+            std::cout << "Error: Division by zero is not allowed.\n";
             return;
         }
         break;
@@ -80,11 +43,90 @@ void Calculator::performCalculation(double operand1, double operand2, char opera
         return;
     }
 
-    memory = result;
     showResult(result);
 }
 
 void Calculator::showResult(double result) {
-    std::cout << "Result: " << result << "\n";
-    previousInput = std::to_string(result);
+    std::cout << "Result: " << result << '\n';
+}
+
+int Calculator::processInput() {
+    displayMenu();
+
+    int choice;
+    std::cout << "Enter your choice (1-7): ";
+    std::cin >> choice;
+
+    if (std::cin.fail()) {
+        std::cout << "Invalid input. Please enter a numeric value.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return processInput();
+    }
+
+    if (choice >= 1 && choice <= 4) {
+        double operand1, operand2;
+        std::cout << "Enter first operand: ";
+        std::cin >> operand1;
+
+        if (std::cin.fail()) {
+            std::cout << "Invalid input. Please enter a numeric value.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            return processInput();
+        }
+
+        std::cout << "Enter second operand: ";
+        std::cin >> operand2;
+
+        if (std::cin.fail()) {
+            std::cout << "Invalid input. Please enter a numeric value.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            return processInput();
+        }
+
+        char operation;
+        switch (choice) {
+        case 1:
+            operation = '+';
+            break;
+        case 2:
+            operation = '-';
+            break;
+        case 3:
+            operation = '*';
+            break;
+        case 4:
+            operation = '/';
+            break;
+        default:
+            std::cout << "Invalid choice. Please try again.\n";
+            return choice;
+        }
+
+        performCalculation(operand1, operand2, operation);
+    } else if (choice == 5) {
+        double operand;
+        std::cout << "Enter operand for square root: ";
+        std::cin >> operand;
+
+        if (std::cin.fail()) {
+            std::cout << "Invalid input. Please enter a numeric value.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            return processInput();
+        }
+
+        double result = sqrt(operand);
+        showResult(result);
+    } else if (choice == 6) {
+        showResult(memory);
+    } else if (choice == 7) {
+        std::cout << "Exiting the calculator. Goodbye!\n";
+    } else {
+        std::cout << "Invalid choice. Please try again.\n";
+    }
+
+    return choice;
 }
